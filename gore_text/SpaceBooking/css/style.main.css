@@ -1,0 +1,147 @@
+html,body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #3e3636;
+  font-family: monospace;
+  font-size: 1.2rem;
+  color: #f2efa0;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: monospace;
+  font-size: 2rem;
+  color: #f2efa0;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-size: 1.8rem;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #3e3636;
+}
+
+.login {
+  position: absolute;
+}
+
+#button-login {
+  height: 100px;
+  width: 100px;
+  margin: 15px;
+  padding-left: 1000px;
+  position: relative;
+  left: -1000px;
+  border-radius: 20vw;
+  background-color: #f90077;
+  display: flex;
+  align-items: center;
+}
+
+.samokat {
+  position: absolute;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  padding-top: 250px;
+
+}
+
+.swipe-block-getwork-1 {
+  position: absolute;
+  left: 20vw;
+  bottom: -100px;
+  background-color: #f90077;
+  padding: 100px;
+  padding-left: 30vw;
+  padding-right: 30vw;
+  border-radius: 50px;
+}
+
+.swipe-block-getwork-2 {
+  position: absolute;
+  left: 20vw;
+  top: -100px;
+  background-color: #f90077;
+  padding: 100px;
+  padding-left: 30vw;
+  padding-right: 30vw;
+  border-radius: 50px;
+} 
+
+.block-canvas {
+  display: flex;
+  position: absolute;
+  height: 80vh;
+  width: 90vw;
+  left: 5vw;
+  top: 15vh;
+  border-radius: 50px;
+  background-color: #807e7e;
+}
+
+.block-login {
+  position: absolute;
+  height: 90vh;
+  width: 90vw;
+  left: -200vw;
+  top: 5vh;
+  border-radius: 50px;
+  background-color: #f90077;
+}
+
+#button-login:hover .block-login {
+  animation-duration: 1s;
+  animation-name: slidein;
+}
+
+.block-canvas * {
+  font-size: 9vw;
+  color: #f2efa0;
+  width: 204px;
+  height: 20vw;
+  background-color: #f90077;
+  margin: 7vw;
+  border-radius: 40px;
+  border: solid 5px #f90077;
+}
+
+.block-canvas *:hover {
+  border: solid 5px #f2efa0;
+}
+
+@keyframes slidein {
+  from {
+    left: -200vw;
+  }
+
+  to {
+    left: 5vw;
+  }
+}
+
+@keyframes slideout {
+  from {
+    left: 5vw;
+  }
+
+  to {
+    left: -200vw;
+  }
+}
+
