@@ -1,0 +1,20 @@
+---
+site_name: zhumaysynba
+site_description: 'Хакатон rocket.tech'
+site_author: 'Alexander Zorkin'
+
+repo_name: 'somnoynadno/zhumaysynba.git'
+repo_url: 'https://github.com/somnoynadno/zhumaysynba.git'
+
+docs_dir: docs/
+edit_uri: edit/master/docs/
+
+nav:
+  - 'Главная': 'index.md'
+  - 'О проекте': 'about.md'
+  - 'Сервисы': 'services.md'
+  - 'Развертывание': 'deploy.md'
+  - 'Команда': 'team.md'
+
+theme:
+  name: 'readthedocs'

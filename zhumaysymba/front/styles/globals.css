@@ -1,0 +1,74 @@
+@font-face {
+  font-family: 'San-Francisco';
+  src: url("../public/fonts/SFProText-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'San-Francisco';
+  src: url("../public/fonts/SFProText-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'San-Francisco';
+  src: url("../public/fonts/SFProText-Semibold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'San-Francisco';
+  src: url("../public/fonts/SFProText-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'San-Francisco';
+  src: url("../public/fonts/SFProText-Heavy.ttf");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type="search"]::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.product-list__card:nth-child(3n + 1) {
+  margin-left: 0px;
+}
+
+body {
+  font-family: "San-Francisco";
+}
+
+.disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.cringe-text {
+  -webkit-text-stroke: 1px white;
+}
+
+.link {
+  color: #007bff; /* цвет текста ссылки */
+  text-decoration: none; /* убираем подчеркивание ссылки */
+  transition: all 0.3s ease-in-out; /* плавное изменение стиля при наведении */
+}
+
+.link:hover {
+  color: #0056b3; /* цвет текста ссылки при наведении */
+  text-decoration: underline; /* добавляем подчеркивание при наведении */
+}
+
+.balance {
+  float: right;
+}
