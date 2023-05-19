@@ -1,0 +1,270 @@
+<!DOCTYPE html> 
+<html lang="en">
+	
+<head>
+		<meta charset="utf-8">
+		<title>Samokat</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		
+		<!-- Favicons -->
+		<link href="assets/img/favicon.png" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
+		
+		<link rel="stylesheet" href="assets/plugins/dropzone/dropzone.min.css">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="assets/css/style.css">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	
+	</head>
+	<body>
+		<script>
+			if(localStorage.getItem('token') == null || localStorage.getItem('token') == undefined){
+				window.location.href = "/login.html"
+			}
+			const token = localStorage.getItem('token');
+		</script>
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+						
+							<!-- Profile Sidebar -->
+							<div class="profile-sidebar">
+								<div class="widget-profile pro-widget-content">
+									<div class="profile-info-widget">
+										<a href="#" class="booking-doc-img">
+											<img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+										</a>
+										<div class="profile-det-info">
+											<h3 id="email_name"></h3>
+								
+										</div>
+									</div>
+								</div>
+								<div class="dashboard-widget">
+									<nav class="dashboard-menu">
+										<ul>
+											<li>
+												<a href="home.html">
+													<i class="fas fa-columns"></i>
+													<span>Home</span>
+												</a>
+											</li>
+											<li  class="active">
+												<a href="chatbot.html">
+													<i class="fas fa-calendar-check"></i>
+													<span>Knowledgebase</span>
+												</a>
+											</li>
+											<li>
+												<a href="discussion.html">
+													<i class="fas fa-user-injured"></i>
+													<span>Discussion</span>
+												</a>
+											</li>
+											
+								
+											<li>
+												<a href="reward.html">
+													<i class="fas fa-star"></i>
+													<span>Reward Center</span>
+												</a>
+											</li>
+											<li>
+												<a href="chat.html">
+													<i class="fas fa-comments"></i>
+													<span>Chat</span>
+												</a>
+											</li>
+											<li>
+												<a href="profile.html">
+													<i class="fas fa-user-cog"></i>
+													<span>Profile</span>
+												</a>
+											</li>
+											<li>
+												<a href="index-2.html">
+													<i class="fas fa-sign-out-alt"></i>
+													<span>Logout</span>
+												</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<!-- /Profile Sidebar -->
+							
+						</div>
+						<div class="col-md-7 col-lg-8 col-xl-9">
+							<!-- Chat Right -->
+							<div class="chat-cont-right">
+								<div class="chat-header">
+							
+									<div class="media">
+										<div class="media-body">
+											<div class="user-name">knowledgebase</div>
+											<div class="user-status">Bot</div>
+										</div>
+									</div>
+						
+								</div>
+								<div class="chat-body">
+									<div class="chat-scroll">
+										<ul class="list-unstyled" id="chat_message_area" style="height : 480px; overflow-y: scroll;">
+
+											
+									
+										</ul>
+									</div>
+								</div>
+								<div class="chat-footer">
+									<div class="input-group">
+									
+										<input type="text" id="text_prompt" class="input-msg-send form-control" placeholder="Type something">
+										<div class="input-group-append">
+											<button onclick="sentAndProcessMessage()" type="button" class="btn msg-send-btn"><i class="fab fa-telegram-plane"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Chat Right -->
+			
+							
+						</div>
+					</div>
+
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+
+		</div>
+
+		<script>
+			function sentAndProcessMessage(){
+				const qry = document.getElementById("text_prompt").value;
+				if(qry == '') {
+					return
+				}else{
+					const area = document.getElementById("chat_message_area");
+					area.insertAdjacentHTML('beforeend', `
+						<!-- user -->
+							<li class="media sent">
+								<div class="media-body">
+									<div class="msg-box">
+										<div>
+											<p>${qry}</p>
+												<ul class="chat-msg-info">
+													<li>
+														<div class="chat-time">
+															<span>${new Date().toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true })}</span>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+						<!-- /user -->
+					`);
+					document.getElementById("text_prompt").value = '';
+					fetch('http://localhost:8000/api/knowledge/chat/', {
+						method: 'POST',
+						headers: {
+							"Content-Type": "application/json",
+							'Authorization' : 'Token ' + token
+						},
+						body: JSON.stringify({
+							"question" : qry
+						})
+					})
+					.then((response) => response.json())
+					.then((result) => {
+						console.log(result)
+						area.insertAdjacentHTML('beforeend', `
+						<!-- bot -->
+						<li class="media received">
+												<!-- <div class="avatar">
+													<img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" class="avatar-img rounded-circle">
+												</div> -->
+												<div class="media-body">
+													<div class="msg-box">
+														<div>
+															<p>${result.answer}</p>
+															<ul class="chat-msg-info">
+																<li>
+																	<div class="chat-time">
+																		<span>${new Date().toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true })}</span>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+											
+												</div>
+											</li>
+						<!-- /bot -->
+					`);
+					})
+					.catch(error => console.error(error));
+				}
+			}
+		</script>
+
+		<!-- /Main Wrapper -->
+
+        <script src="script/chatbot.js"></script>
+		<!-- jQuery -->
+		<script src="assets/js/jquery.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/popper.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		
+		<!-- Sticky Sidebar JS -->
+        <script src="assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+        <script src="assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+		
+		<!-- Select2 JS -->
+		<script src="assets/plugins/select2/js/select2.min.js"></script>
+		
+		<!-- Dropzone JS -->
+		<script src="assets/plugins/dropzone/dropzone.min.js"></script>
+		
+		<!-- Bootstrap Tagsinput JS -->
+		<script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+		
+		<!-- Profile Settings JS -->
+		<script src="assets/js/profile-settings.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+		
+	</body>
+
+
+</html>
