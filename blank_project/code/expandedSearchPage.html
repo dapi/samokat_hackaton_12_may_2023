@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesSearch.css">
+    <link rel="stylesheet" href="shared_styles.css">
+    <title>Blank</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="scriptSearch.js"></script>
+</head>
+<body>
+    <div id="container" class="unselectable">
+        <div id="pageBody">
+            <div id="searching_field"></div>
+            <div id="make_search_btn">search!</div>
+            <div id="checkBlocks">
+                <div id="roles_check" class="check_block">
+                    <div class="text_check">роли</div>
+                </div>
+                <div id="names_check" class="check_block">
+                    <div class="text_check">имена</div>
+                </div>
+                <div id="interests_check" class="check_block">
+                    <div class="text_check">интересы</div>
+                </div>
+                <div id="departament_check" class="check_block">
+                    <div class="text_check">департамент</div>
+                </div>
+            </div>
+            <div id="finded_fields"></div>
+        </div>
+        <div id="header">
+            <div id="logo_main" class="logo"></div>
+            <div id="blocksHeader">
+                <div class="inBlock" id="toMyCab">В личный кабинет</div>
+            </div>
+            <div id="form_search">
+                <input type="text" name="fast-search" id="fast_search">
+                <div id="fast_search_button"></div>
+            </div>
+        </div>
+    </div>
+    <div id="person_info" class="unselectable">
+        <div id="prof_photo_info"></div>
+        <div class="rounded_info" id="naming_info">TEXT text</div>
+        <div class="rounded_info" id="email_info">email</div>
+        <div class="rounded_info" id="phoneNumber_info">phone</div>
+        <div class="rounded_info" id="roles_info">roles</div>
+        <div class="rounded_info" id="interests_info">interests</div>
+        <div class="rounded_info" id="departament_info">departament</div>
+        <div id="cross_info">x</div>
+        <div id="goRocket_info"></div>
+    </div>
+</body>
+</html>
