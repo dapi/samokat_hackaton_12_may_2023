@@ -1,0 +1,47 @@
+.profile__comment-block {
+    height: 19rem;
+    padding: 20px 40px;
+}
+
+.profile__comment-block-flcol {
+    display: flex;
+    height: 14rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.profile__comment-block-flrow {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile__comment-block-flrow div {
+    height: 25px;
+    padding: 10px 0 10px 35px;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+}
+
+.profile__comment-block-flrow .icon1 {
+    background-image: url(../../static/icon1.png);
+}
+
+.profile__comment-block-flrow .icon2 {
+    background-image: url(../../static/icon2.png);
+}
+
+.profile__comment-block-flrow .icon3 {
+    background-image: url(../../static/icon3.png);
+}
+
+.profile__comment-block-flrow .icon4 {
+    background-image: url(../../static/icon4.png);
+}

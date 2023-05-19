@@ -1,0 +1,65 @@
+.header {
+    display: flex;
+    margin: 3.1rem auto 0 auto;
+    width: var(--desktop-main-width);
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: var(--radical-red)
+}
+
+.header__logo {
+    width: 194px;
+    height: 74px;
+    font-weight: 800;
+}
+
+.header nav {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 6.3rem;
+}
+
+.header a {
+    font-family: inherit;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: var(--radical-red)
+}
+
+#btn-exit {
+    font-family: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23px;
+    text-transform: uppercase;
+}
+
+.header a:hover, .header a:focus, #btn-exit:hover {
+    animation: header__a-hover .7s forwards;
+}
+
+@keyframes header__a-hover {
+    to {
+        text-shadow: 5px 4px 4px rgba(151, 143, 143, 0.65);
+    }
+}

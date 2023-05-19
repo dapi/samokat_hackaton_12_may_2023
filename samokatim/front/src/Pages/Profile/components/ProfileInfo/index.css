@@ -1,0 +1,34 @@
+.profile-info__foto {
+    z-index: 1;
+}
+
+.profile-info__foto > * {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.profile-info__bloc-parent {
+    margin-top: auto;
+    height: 0;
+}
+
+.profile-info {
+    width: 27.8rem;
+    height: 38.5rem;
+}
+
+.profile-info__block {
+    position: relative;
+    top: -30.8rem;
+    left: 2.37rem;
+    z-index: -1;
+}
+
+.profile-info__block > div {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 2rem);
+    justify-content: center;
+    align-items: end;
+}
